@@ -5,7 +5,7 @@
 
 
 int numberOfJobs = 0;
-
+int jobEnd =-1,jobFront = -1;
 typedef struct {
 
 	int priority;
@@ -13,16 +13,16 @@ typedef struct {
 }job;
 
 #define INVALIDJOB {-1,-1};
+#define MAX_SIZE 20
 job invalidJob = INVALIDJOB;
-int MAX_SIZE = 20
+
 
 job Jobs[MAX_SIZE];
 
-int jobFront = jobEnd = -1;
 
 job createJob(int priority,int data){
 
-	if(priority == NULL || data == NULL){
+	if(priority == 0 || data == 0){
 	
 		perror("Couldn't create job, too few arguments");
 		return invalidJob;
@@ -31,7 +31,7 @@ job createJob(int priority,int data){
 	job newJob;
 	newJob.priority = priority;
 	newJob.data = data;
-
+	numberOfJobs++;
 	return newJob;
 
 }
@@ -65,7 +65,7 @@ job dequeueJob(job Jobs[]){
 	if(jobEnd < 0){
 	
 		perror("UNDERFLOW,NO JOBS IN QUEUE");
-		return invlaidJob;
+		return invalidJob;
 	}
 
 	job temp = Jobs[jobFront];

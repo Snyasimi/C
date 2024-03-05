@@ -96,6 +96,35 @@ int highestPriority(job Jobs[]){
 
 }
 
+void viewJobs(job Job[]){
+
+	//looping through array INDEX STARTS FROM 1
+	for(int i = 1 ; i <= numberOfJobs ; i++){
+	
+		printf("{Job number -> %d, Job priority->%d, Job data->%d},",i,Job[i].priority,Job[i].data);
+	}
+	return;
+}
 
 
-int main(){}
+
+int main(){
+
+
+	enqueueJob(createJob(2,5),Jobs);
+
+	
+enqueueJob(createJob(3,5),Jobs);
+
+enqueueJob(createJob(4,5),Jobs);
+enqueueJob(createJob(10,5),Jobs);
+enqueueJob(createJob(4,5),Jobs);
+
+printf("\n| highest priority job = %d |\n",highestPriority(Jobs));
+viewJobs(Jobs);
+
+
+	return 0;
+
+
+}

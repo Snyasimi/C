@@ -18,7 +18,7 @@ int main(){
         //make socket
 
         int sock_fd = socket(AF_INET,SOCK_STREAM,0);
-
+printf("FD = %d",sock_fd);
         if(sock_fd < 0 ){
 
             perror("Could not make a socket");

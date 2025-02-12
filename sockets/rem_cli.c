@@ -11,8 +11,8 @@ int main(){
     struct sockaddr_in server;
 
         server.sin_family = AF_INET;
-        inet_pton(AF_INET,"127.0.0.1",&server.sin_addr);
-        server.sin_port = htons(6000);
+        inet_pton(AF_INET,"192.168.164.191",&server.sin_addr);
+        server.sin_port = htons(8080);
 
 
 
@@ -26,9 +26,10 @@ int main(){
 	}
 
 	//conect
-	
+	printf("FD = %d",sock_fd);
 	if(connect(sock_fd,(struct sockaddr *)&server,sizeof(server)) < 0 ){
 		perror("could not connect to socket");
+		return 1;
 	
 	}
 
@@ -38,6 +39,10 @@ int main(){
 
 	while(1){
          char buffer[30];
+
+	// recv(sock_fd,(void *)&buffer,sizeof(buffer),0);
+	// printf("%s\n",buffer);
+
         sleep(1);
         printf("Enter message to send\n:");
         scanf("%s",buffer);

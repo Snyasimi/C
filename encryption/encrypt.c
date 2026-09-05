@@ -4,8 +4,13 @@
 
 int main(){
 
-	unsigned char msg[] = "Hello world";
+	unsigned char msg[50];// = "Hello world";
 
+	//char buffer[30];
+	printf("Enter data to encrypt\n");
+	scanf("%s",&msg);
+	
+	
 	EVP_MD *md = EVP_MD_fetch(NULL,"SHA256",NULL);
 
 	size_t digest_size = EVP_MD_size(md);
@@ -21,12 +26,12 @@ int main(){
 
 	EVP_DigestFinal_ex(md_ctx,digest,(unsigned int *)&digest_size);
 
-	printf("SHA2-256: ");
+	printf("SHA2-256 output of data entered:\n ");
 		for(size_t i ; i < digest_size; i++)
 			printf("%02x",digest[i]);
 		printf("\n");
 
-	printf("Hello world\n");
+	printf("\nLet's Encrypt\n\n");
 
 
 	//Create a digest of the text hello world, should be SHA-2-256
